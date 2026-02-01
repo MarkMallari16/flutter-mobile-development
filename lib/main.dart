@@ -56,6 +56,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  void _decrementCounter() {
+    setState(() {
+      _counter--;
+    });
+  }
+
+  void _resetCounter() {
+    setState(() {
+      _counter = 0;
+    });
+  }
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -63,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter--;
+      _counter++;
     });
   }
 
@@ -109,14 +121,31 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: _decrementCounter,
+                  child: const Icon(Icons.remove),
+                ),
+                ElevatedButton(
+                  onPressed: _resetCounter,
+                  child: const Icon(Icons.refresh),
+                ),
+                ElevatedButton(
+                  onPressed: _incrementCounter,
+                  child: const Icon(Icons.add),
+                ),
+              ],
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Decrement',
-        child: const Icon(Icons.close_sharp),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _incrementCounter,
+      //   tooltip: 'Decrement',
+      //   child: const Icon(Icons.close_sharp),
+      // ),
     );
   }
 }
