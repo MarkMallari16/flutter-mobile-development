@@ -56,18 +56,21 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  //for subtract counter
   void _decrementCounter() {
     setState(() {
       _counter--;
     });
   }
 
+  //for reset counter
   void _resetCounter() {
     setState(() {
       _counter = 0;
     });
   }
 
+  //for add counter
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -123,6 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
+
               children: [
                 ElevatedButton(
                   onPressed: _decrementCounter,
