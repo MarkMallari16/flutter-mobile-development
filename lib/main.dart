@@ -62,15 +62,13 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter--;
     });
   }
-
   //for reset counter
   void _resetCounter() {
     setState(() {
       _counter = 0;
     });
   }
-
-  //for add counter
+s  //for add counter
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
