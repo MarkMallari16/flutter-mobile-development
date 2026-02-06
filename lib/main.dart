@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.indigoAccent),
       ),
-      home: const MyHomePage(title: 'Not Demo'),
+      home: const MyHomePage(title: 'Basic Demo'),
     );
   }
 }
@@ -54,6 +54,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final TextEditingController _inputController = TextEditingController();
+
   int _counter = 0;
 
   //for subtract counter
@@ -62,13 +64,15 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter--;
     });
   }
+
   //for reset counter
   void _resetCounter() {
     setState(() {
       _counter = 0;
     });
   }
-s  //for add counter
+
+  //for add counter
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -77,6 +81,26 @@ s  //for add counter
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+    });
+  }
+
+  void _addFromInput() {
+    int value = int.tryParse(_inputController.text) ?? 0;
+
+    setState(() {
+      _counter += value;
+    });
+
+    _inputController.clear();
+  }
+
+  void _subtractFromInput() {
+    int value = int.tryParse(_inputController.text) ?? 0;
+
+    setState(() {
+      _counter -= value;
+
+      _inputController.clear();
     });
   }
 
@@ -122,21 +146,51 @@ s  //for add counter
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextField(
+                controller: _inputController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  labelText: 'Enter number',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-
               children: [
                 ElevatedButton(
                   onPressed: _decrementCounter,
                   child: const Icon(Icons.remove),
                 ),
+
+                const SizedBox(width: 10),
+
                 ElevatedButton(
                   onPressed: _resetCounter,
                   child: const Icon(Icons.refresh),
                 ),
+
+                const SizedBox(width: 10),
+
                 ElevatedButton(
                   onPressed: _incrementCounter,
                   child: const Icon(Icons.add),
+                ),
+
+                const SizedBox(width: 10),
+
+                ElevatedButton(
+                  onPressed: _addFromInput,
+                  child: const Text("Add Input"),
+                ),
+
+                const SizedBox(width: 10),
+
+                ElevatedButton(
+                  onPressed: _subtractFromInput,
+                  child: const Text("Subract Input"),
                 ),
               ],
             ),
