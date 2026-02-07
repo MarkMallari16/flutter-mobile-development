@@ -180,7 +180,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
 
                 const SizedBox(width: 10),
-
+              ],
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
                 ElevatedButton(
                   onPressed: _addFromInput,
                   child: const Text("Add Input"),
